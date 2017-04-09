@@ -4,10 +4,7 @@ import main.database.OrderItemDatabase
 import main.exceptions.DuplicateItemException
 import main.model.OrderItem
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class OrderItemController {
@@ -16,7 +13,8 @@ class OrderItemController {
     @Autowired
     private lateinit var database: OrderItemDatabase
 
-    @RequestMapping("", method = arrayOf(RequestMethod.GET))
+    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
+    @RequestMapping("/api/v1/items", method = arrayOf(RequestMethod.GET))
     fun orderItems() = database.getAllOrderItems()
 
     @RequestMapping("", method = arrayOf(RequestMethod.POST))
