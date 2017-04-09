@@ -15,24 +15,30 @@ class OrderItemDatabase {
 
         // Fill our "database"
         orderItems.add(OrderItem(
+                Integer(1),
                 "Juanito Arcoiris",
                 Integer(1),
+                true,
                 false,
-                false,
+                isUnpaired = true,
                 userURL = "https://d.gr-assets.com/books/1448127430l/7235533.jpg"))
 
         orderItems.add(OrderItem(
+                Integer(2),
                 "Dalma y Gianina",
-                Integer(1),
+                Integer(2),
                 false,
+                true,
                 false,
                 userURL = "https://d.gr-assets.com/books/1327656754l/11.jpg"))
 
         orderItems.add(OrderItem(
-                "Marilyn Soldan",
+                Integer(3),
+                "Marilyn Jennifer Soldan",
                 Integer(1),
                 false,
                 false,
+                true,
                 userURL = "https://d.gr-assets.com/books/1437254833l/68428.jpg"))
     }
 
