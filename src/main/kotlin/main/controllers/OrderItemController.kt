@@ -17,7 +17,8 @@ class OrderItemController {
     @RequestMapping("/api/v1/items", method = arrayOf(RequestMethod.GET))
     fun orderItems() = database.getAllOrderItems()
 
-    @RequestMapping("", method = arrayOf(RequestMethod.POST))
+    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
+    @RequestMapping("/api/v1/items", method = arrayOf(RequestMethod.POST))
     fun addOrderItem(@RequestBody orderItem: OrderItem) =
             if (database.addOrderItem(orderItem)) orderItem
             else throw DuplicateItemException()

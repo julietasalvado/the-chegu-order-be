@@ -54,6 +54,7 @@ class OrderItemDatabase {
      *         false - otherwise
      */
     fun addOrderItem(orderItem: OrderItem) : Boolean {
+        orderItem.id = Integer(orderItems.toList().size)
         orderItems.firstOrNull() {it.username == orderItem.username} ?.let { return false }
         orderItems.add(orderItem)
         return true
