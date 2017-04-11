@@ -4,13 +4,15 @@ version '1.0-SNAPSHOT'
 buildscript {
 
     ext.kotlinVersion = '1.1.1'
+    ext.springDataMongodbVersion = '1.10.1.RELEASE'
+    ext.springBootGradlePlugin = '1.5.2.RELEASE'
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootGradlePlugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
     }
@@ -31,5 +33,8 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.data:spring-data-mongodb:$springDataMongodbVersion")
+    compile('com.fasterxml.jackson.module:jackson-module-kotlin') //allows to deal with data classes with no default constructor or with Kotlin collections
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
