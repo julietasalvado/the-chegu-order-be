@@ -35,4 +35,12 @@ class OrderItemController {
         return if (orderItemRepository.insert(toOrderItemEntity) != null) toOrderItemEntity
         else throw DuplicateItemException()
     }
+
+    /**
+     * Remove an item from the order.
+     */
+    @DeleteMapping("/api/v1/items/{id}", produces = arrayOf("application/json"))
+    fun removeOrderItem(@PathVariable("id") id: String) {
+        orderItemRepository.delete(id)
+    }
 }
