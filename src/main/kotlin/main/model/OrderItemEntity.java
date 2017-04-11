@@ -6,6 +6,7 @@ import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
+ *
  * TODO translate this class to kotlin
  */
 @Document(collection = "items")
@@ -38,8 +39,8 @@ public class OrderItemEntity {
         this.userURL = userURL;
     }
 
-    public ObjectId getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public void setId(ObjectId id) {
