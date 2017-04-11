@@ -6,6 +6,7 @@ buildscript {
     ext.kotlinVersion = '1.1.1'
     ext.springDataMongodbVersion = '1.10.1.RELEASE'
     ext.springBootGradlePlugin = '1.5.2.RELEASE'
+    ext.jodaVersion = '1.1.0'
 
     repositories {
         mavenCentral()
@@ -27,6 +28,7 @@ apply {
 
 repositories {
     mavenCentral()
+//    jcenter()
 }
 
 dependencies {
@@ -35,6 +37,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.data:spring-data-mongodb:$springDataMongodbVersion")
     compile('com.fasterxml.jackson.module:jackson-module-kotlin') //allows to deal with data classes with no default constructor or with Kotlin collections
+//    compile("com.github.debop:koda-time:$jodaVersion")
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
