@@ -23,12 +23,12 @@ import javax.validation.constraints.NotNull
 //    }
 //}
 
-@Configuration
-@ConfigurationProperties(prefix = "myapp")
-class MyAppProps {
-//    @NotNull lateinit var requiredProp: String
-    var optionalProp: String? = null
-}
+//@Configuration
+//@ConfigurationProperties(prefix = "myapp")
+//class MyAppProps {
+////    @NotNull lateinit var requiredProp: String
+//    var optionalProp: String? = null
+//}
 
 @Configuration
 class SpringConfiguration {

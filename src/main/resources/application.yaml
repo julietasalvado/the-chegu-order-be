@@ -3,3 +3,12 @@ default:
   time:
     minutes: 780
 #    13hs
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: chegu
+logging:
+  level:
+    org.springframework.web:DEBUG

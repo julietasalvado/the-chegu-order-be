@@ -35,7 +35,7 @@ class OrderController {
     /**
      * Creates a default order.
      *
-     * Default values are took from the yaml property file myapp.yaml
+     * Default values are took from the yaml property file application.yaml
      */
     @PostMapping("/api/v1/orders/default", consumes = arrayOf("application/json"), produces = arrayOf("application/json"))
     fun addDefaultOrder(): OrderEntity? {
