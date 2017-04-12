@@ -7,10 +7,7 @@ import main.model.OrderEntity
 import main.util.addMinutes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -27,6 +24,7 @@ class OrderController {
     @Autowired
     private lateinit var orderRepository: OrderRepository
 
+    @CrossOrigin(origins = arrayOf("*"))
     @PostMapping("/api/v1/orders", consumes = arrayOf("application/json"), produces = arrayOf("application/json"))
     fun addOrder(@RequestBody request: AddOrderRequest) {
         orderRepository.save(request.toOrderEntity())
@@ -37,11 +35,14 @@ class OrderController {
      *
      * Default values are took from the yaml property file application.yaml
      */
+//    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
+    @CrossOrigin(origins = arrayOf("*"))
     @PostMapping("/api/v1/orders/default", consumes = arrayOf("application/json"), produces = arrayOf("application/json"))
     fun addDefaultOrder(): OrderEntity? {
         return orderRepository.save(OrderEntity(place = place, date = today().addMinutes(minutes)))
     }
 
+    @CrossOrigin(origins = arrayOf("*"))
     @GetMapping("/api/v1/orders/last", produces = arrayOf("application/json"))
     fun getLastOrder(): OrderEntity? {
         val list = orderRepository.findAll()?.toList()
