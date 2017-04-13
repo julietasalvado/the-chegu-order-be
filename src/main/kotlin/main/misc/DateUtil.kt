@@ -1,4 +1,4 @@
-package main.util
+package main.misc
 
 import org.joda.time.DateTime
 import java.util.*

@@ -3,7 +3,7 @@ package main.controllers
 import main.database.OrderItemRepository
 import main.domain.AddItemOrderRequest
 import main.domain.toOrderItemEntity
-import main.exceptions.DuplicateItemException
+import main.misc.DuplicateItemException
 import main.model.OrderItemEntity
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -20,7 +20,7 @@ class OrderItemController {
     /**
      * Returns all items in the order. An empty array is returned when the order is empty
      */
-    @CrossOrigin(origins = arrayOf("*"))
+    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
     @RequestMapping("/api/v1/items", method = arrayOf(RequestMethod.GET))
     fun orderItems(): MutableList<OrderItemEntity>? = orderItemRepository.findAll()
 
@@ -28,7 +28,7 @@ class OrderItemController {
      * Adds a new item into the order.
      * @throws DuplicateItemException if the item is already in the order
      */
-    @CrossOrigin(origins = arrayOf("*"))
+    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
     @PostMapping("/api/v1/items", consumes = arrayOf("application/json"), produces = arrayOf("application/json"))
     fun addOrderItem(@RequestBody orderItem: AddItemOrderRequest): OrderItemEntity {
         val toOrderItemEntity = orderItem.toOrderItemEntity()
@@ -39,7 +39,7 @@ class OrderItemController {
     /**
      * Remove an item from the order.
      */
-    @CrossOrigin(origins = arrayOf("*"))
+    @CrossOrigin(origins = arrayOf("http://localhost:3000"))
     @DeleteMapping("/api/v1/items/{id}", produces = arrayOf("application/json"))
     fun removeOrderItem(@PathVariable("id") id: String) {
         orderItemRepository.delete(id)
